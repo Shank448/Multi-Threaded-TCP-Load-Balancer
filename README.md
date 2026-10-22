@@ -110,14 +110,3 @@ tools/echo_backend.cpp     test backend (line mode shows which backend answered;
 tools/load_client.cpp      multi-threaded load generator (throughput, p50/p95/p99, distribution)
 tests/integration_test.py  end-to-end tests
 ```
-
-## Resume bullets (pick numbers you have verified on YOUR machine)
-
-- Built a multi-threaded TCP load balancer in C++17 with POSIX threads and raw sockets: bounded
-  worker pool (mutex/condvar), round-robin and least-connections scheduling, and `poll()`-based
-  non-blocking bidirectional relay with back-pressure and half-close handling.
-- Added fault tolerance: passive failover plus active health checks with automatic recovery, load
-  shedding on overload, and graceful shutdown; sustained ~4-5k new connections/s with zero failed
-  requests, including during a simulated backend crash.
-- Verified correctness with a 9-test end-to-end suite (incl. 16 MB SHA-256-checked full-duplex streams)
-  run clean under ThreadSanitizer and AddressSanitizer/UBSan.
